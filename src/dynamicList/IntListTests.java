@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+/* NOTE: assertEquals(intList1, intList2) won't work since the equals methods are overloaded instead of overriden.
+ * You have to use assertTrue(intList1.equals(intList2)).
+ */
+
 class IntListTests {
 
 	/**
@@ -44,7 +48,7 @@ class IntListTests {
 		other.append(2);
 		l.appendAll(other);
 
-		assertEquals(other, l);
+		assertTrue(l.equals(other));
 	}
 
 	/**
@@ -432,7 +436,7 @@ class IntListTests {
 
 		assertEquals(-1, l.indexOf(1));
 	}
-	
+
 	/**
 	 * If a list does not contain the element, should return -1
 	 */
@@ -445,7 +449,7 @@ class IntListTests {
 
 		assertEquals(-1, l.indexOf(0));
 	}
-	
+
 	/**
 	 * Test on a length 1 list with an instance of the element being searched for
 	 */
@@ -453,10 +457,10 @@ class IntListTests {
 	void indexOfTest04() {
 		IntDynamicList l = new IntDynamicList();
 		l.append(4);
-		
+
 		assertEquals(0, l.indexOf(4));
 	}
-	
+
 	/**
 	 * Test on a list that contains one of the given element
 	 */
@@ -466,10 +470,10 @@ class IntListTests {
 		l.append(1);
 		l.append(4);
 		l.append(0);
-		
+
 		assertEquals(1, l.indexOf(4));
 	}
-	
+
 	/**
 	 * Test on a list that contains several of the given element
 	 */
@@ -482,10 +486,10 @@ class IntListTests {
 		l.append(4);
 		l.append(4);
 		l.append(5);
-		
+
 		assertEquals(1, l.indexOf(4));
 	}
-	
+
 	/**
 	 * Test on a list that contains the given element at the beginning
 	 */
@@ -498,10 +502,10 @@ class IntListTests {
 		l.append(4);
 		l.append(4);
 		l.append(5);
-		
+
 		assertEquals(0, l.indexOf(4));
 	}
-	
+
 	/**
 	 * Test on a list that only contains the given element at the end
 	 */
@@ -514,16 +518,269 @@ class IntListTests {
 		l.append(4);
 		l.append(4);
 		l.append(5);
-		
-		assertEquals(0, l.indexOf(5));
+
+		assertEquals(5, l.indexOf(5));
 	}
-	
+
 	/**
-	 * 
+	 * Inserting at index 0 into an empty list
 	 */
 	@Test
 	void insertTest01() {
-		
+		IntDynamicList l = new IntDynamicList();
+		l.insert(0, 1);
+
+		assertEquals(1, l.size());
+		assertEquals(1, l.get(0));
+	}
+
+	/**
+	 * Inserting several times at the end of a list
+	 */
+	@Test
+	void insertTest02() {
+		IntDynamicList l = new IntDynamicList();
+		for (int i = 0; i < 5; i++)
+			l.insert(i, i + 1);
+
+		assertEquals(5, l.size());
+		for (int i = 0; i < 5; i++)
+			assertEquals(i + 1, l.get(i));
+	}
+
+	/**
+	 * Inserting at index 0 into a non-empty list
+	 */
+	@Test
+	void insertTest03() {
+		IntDynamicList l = new IntDynamicList();
+		for (int i = 0; i < 5; i++)
+			l.insert(i, i + 1);
+		l.insert(0, 0);
+
+		assertEquals(6, l.size());
+		for (int i = 0; i < 6; i++)
+			assertEquals(i, l.get(i));
+	}
+
+	/**
+	 * Inserting into the middle of a non-empty list
+	 */
+	@Test
+	void insertTest04() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(0);
+		l.append(1);
+		l.append(2);
+		l.append(4);
+		l.insert(3, 3);
+
+		assertEquals(5, l.size());
+		for (int i = 0; i < l.size(); i++)
+			assertEquals(i, l.get(i));
+	}
+
+	/**
+	 * Inserting into a negative index in an empty list
+	 */
+	@Test
+	void insertTest05() {
+		IntDynamicList l = new IntDynamicList();
+
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(-1, 0);
+		});
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(-10, 0);
+		});
+	}
+
+	/**
+	 * Inserting into a negative index in a non-empty list
+	 */
+	@Test
+	void insertTest06() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(0);
+
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(-1, 0);
+		});
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(-10, 0);
+		});
+	}
+
+	/**
+	 * Inserting into an invalid index in an empty list
+	 */
+	@Test
+	void insertTest07() {
+		IntDynamicList l = new IntDynamicList();
+
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(1, 0);
+		});
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(10, 0);
+		});
+	}
+
+	/**
+	 * Inserting into an invalid index in a non-empty list
+	 */
+	@Test
+	void insertTest08() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(0);
+
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(2, 0);
+		});
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			l.insert(20, 0);
+		});
+	}
+
+	/**
+	 * Empty list
+	 */
+	@Test
+	void isEmptyTest01() {
+		IntDynamicList l = new IntDynamicList();
+
+		assertTrue(l.isEmpty());
+	}
+
+	/**
+	 * List with 1 element
+	 */
+	@Test
+	void isEmptyTest02() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(0);
+
+		assertFalse(l.isEmpty());
+	}
+
+	/**
+	 * List with several elements
+	 */
+	@Test
+	void isEmptyTest03() {
+		IntDynamicList l = new IntDynamicList();
+		for (int i = 0; i < 5; i++)
+			l.append(i);
+
+		assertFalse(l.isEmpty());
+	}
+
+	/**
+	 * If the list is empty, should return -1
+	 */
+	@Test
+	void lastlastIndexOfTest01() {
+		IntDynamicList l = new IntDynamicList();
+
+		assertEquals(-1, l.lastIndexOf(0));
+		assertEquals(-1, l.lastIndexOf(1));
+		assertEquals(-1, l.lastIndexOf(-1));
+	}
+
+	/**
+	 * If a list of length 1 does not contain the element, should return -1
+	 */
+	@Test
+	void lastlastIndexOfTest02() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(0);
+
+		assertEquals(-1, l.lastIndexOf(1));
+	}
+
+	/**
+	 * If a list does not contain the element, should return -1
+	 */
+	@Test
+	void lastlastIndexOfTest03() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(4);
+		l.append(5);
+		l.append(6);
+
+		assertEquals(-1, l.lastIndexOf(0));
+	}
+
+	/**
+	 * Test on a length 1 list with an instance of the element being searched for
+	 */
+	@Test
+	void lastlastIndexOfTest04() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(4);
+
+		assertEquals(0, l.lastIndexOf(4));
+	}
+
+	/**
+	 * Test on a list that contains one of the given element
+	 */
+	@Test
+	void lastlastIndexOfTest05() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(1);
+		l.append(4);
+		l.append(0);
+
+		assertEquals(1, l.lastIndexOf(4));
+	}
+
+	/**
+	 * Test on a list that contains several of the given element
+	 */
+	@Test
+	void lastlastIndexOfTest06() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(1);
+		l.append(4);
+		l.append(0);
+		l.append(4);
+		l.append(4);
+		l.append(5);
+
+		assertEquals(4, l.lastIndexOf(4));
+	}
+
+	/**
+	 * Test on a list that contains the given element only at the beginning
+	 */
+	@Test
+	void lastlastIndexOfTest07() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(1);
+		l.append(4);
+		l.append(0);
+		l.append(4);
+		l.append(4);
+		l.append(5);
+
+		assertEquals(0, l.lastIndexOf(1));
+	}
+
+	/**
+	 * Test on a list that contains the given element at the end
+	 */
+	@Test
+	void lastlastIndexOfTest08() {
+		IntDynamicList l = new IntDynamicList();
+		l.append(4);
+		l.append(4);
+		l.append(0);
+		l.append(4);
+		l.append(4);
+		l.append(4);
+
+		assertEquals(5, l.lastIndexOf(4));
 	}
 
 }
