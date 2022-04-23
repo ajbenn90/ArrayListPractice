@@ -11,39 +11,15 @@ package dynamicList;
  * <i>insert</i> inside of other methods to avoid code repitition.
  * </p>
  * <p>
- * Side note: While you may have to increase the size of the backing array after
- * an insert, you do not have to decrease the size of the backing array after a
- * removal. You can if you want to, but it's not required. If you choose to do
- * so, don't decrease the size of the array every time an element is removed.
- * (That would be expensive). Think about a threshold would be provide a good
- * compromise between preserving memory and keeping it inexpensive.
+ * None of your method bodies should exceed 11 lines (not including brackets and
+ * whitespace).
  * </p>
  * <p>
- * For a small hint, here's how many lines it took me to implement each method
- * (not including brackets). Note that I also created a helper method for
- * changing the size of the backing array, which I don't include in the
- * calculations below.
- * <ul>
- * <li>append - 1</li>
- * <li>appendAll - 2</li>
- * <li>clear - 1</li>
- * <li>contains - 1</li>
- * <li>equals - 8</li>
- * <li>indexOf - 4</li>
- * <li>insert - 8</li>
- * <li>isEmpty - 1</li>
- * <li>lastIndexOf - 4</li>
- * <li>prepend - 1</li>
- * <li>remove - 7</li>
- * <li>set - 5</li>
- * <li>size - 1</li>
- * <li>toArray - 4</li>
- * <li>trimToSize - 1</li>
- * </ul>
- * Note that I used some clever strategies in some of these methods (such as in
- * <i>empty</i>). If you can't figure out how to make your methods any shorter,
- * that's fine. As long as it works (and has good style), don't worry too much
- * about making your methods as short as mine.
+ * Side note: You do not have to decrease the size of the backing array after a
+ * removal. You can if you want to, but it's not required. If you choose to do
+ * so, don't decrease the size of the array every time an element is removed.
+ * (That would be expensive). Think about a threshold that would provide a
+ * good compromise between preserving memory and keeping it inexpensive.
  * </p>
  * 
  * @author alex
