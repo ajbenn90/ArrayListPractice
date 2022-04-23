@@ -24,7 +24,7 @@ public class IntDynamicList implements IntList {
 	@Override
 	public void appendAll(IntList vals) {
 		for (int i = 0; i < vals.size(); i++)
-			this.append(vals.get(i));
+			this.insert(size, vals.get(i));
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class IntDynamicList implements IntList {
 	public boolean equals(IntList other) {
 		if (other == null)
 			return false;
-		
+
 		if (this.size != other.size())
 			return false;
 
@@ -105,9 +105,9 @@ public class IntDynamicList implements IntList {
 	public int remove(int index) {
 		if (index < 0 || index >= size)
 			throw new IndexOutOfBoundsException();
-		
+
 		int oldVal = data[index];
-		
+
 		size--;
 		shiftDataLeft(index + 1);
 
@@ -118,9 +118,9 @@ public class IntDynamicList implements IntList {
 	public int set(int index, int val) {
 		if (index < 0 || index >= size)
 			throw new IndexOutOfBoundsException();
-		
+
 		int oldVal = data[index];
-		
+
 		data[index] = val;
 
 		return oldVal;
@@ -134,10 +134,10 @@ public class IntDynamicList implements IntList {
 	@Override
 	public int[] toArray() {
 		int[] arr = new int[size];
-		
+
 		for (int i = 0; i < size; i++)
 			arr[i] = data[i];
-		
+
 		return arr;
 	}
 
@@ -174,7 +174,8 @@ public class IntDynamicList implements IntList {
 
 	/**
 	 * Shifts data in the backing array one to the left, including the value at
-	 * startIndex. startIndex should never be 0. Assumes size has already been decremented.
+	 * startIndex. startIndex should never be 0. The data to the left of startIndex
+	 * will be lost. Assumes size has already been decremented.
 	 * 
 	 * @param startIndex Where to start shifting
 	 */

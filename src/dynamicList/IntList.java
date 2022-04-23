@@ -9,7 +9,7 @@ package dynamicList;
 public interface IntList {
 
 	/**
-	 * Appends the given value to the end of the list.
+	 * Appends the given value to the end of this list.
 	 * 
 	 * @param value
 	 */
@@ -23,12 +23,12 @@ public interface IntList {
 	public void appendAll(IntList vals);
 
 	/**
-	 * Removes all elemnts from this list.
+	 * Removes all elements from this list.
 	 */
 	public void clear();
 
 	/**
-	 * Checks if the given value is in the list.
+	 * Checks if the given value is in this list.
 	 * 
 	 * @param val
 	 * @return True if the value is in the list. False otherwise.
@@ -37,7 +37,8 @@ public interface IntList {
 
 	/**
 	 * Checks if the given list is the same as this list, i.e. has the same values
-	 * in the same order. If "other" is null, return false.
+	 * in the same order. If <i>other</i> is null, return false instead of throwing an
+	 * exception.
 	 * 
 	 * @param other
 	 * @return
@@ -55,8 +56,8 @@ public interface IntList {
 	public int get(int index);
 
 	/**
-	 * Returns the index of the first occurrence of the given value or -1 if the
-	 * list does not contain the value.
+	 * Returns the index of the <i>first</i> occurrence of the given value or -1 if
+	 * the list does not contain the value.
 	 * 
 	 * @param val
 	 * @return
@@ -64,9 +65,15 @@ public interface IntList {
 	public int indexOf(int val);
 
 	/**
+	 * <p>
 	 * Inserts the value at the given index. All values after this index (including
 	 * the value originally at this index) are shifted one to the right. The value
-	 * may inserted at the very end of the list.
+	 * may be inserted at the very end of the list (at index "size").
+	 * </p>
+	 * <p>
+	 * e.g. If a = [0, 1, 3, 4], a.insert(2, 2) would make it [0, 1, 2, 3, 4].
+	 * a.insert(5, 5) would make it [0, 1, 2, 3, 4, 5].
+	 * </p>
 	 * 
 	 * @param index
 	 * @param val
@@ -83,8 +90,8 @@ public interface IntList {
 	public boolean isEmpty();
 
 	/**
-	 * Returns the index of the last occurrence of the given value or -1 if the list
-	 * does not contain the value.
+	 * Returns the index of the <i>last</i> occurrence of the given value or -1 if
+	 * the list does not contain the value.
 	 * 
 	 * @param val
 	 * @return
@@ -92,15 +99,20 @@ public interface IntList {
 	public int lastIndexOf(int val);
 
 	/**
-	 * Inserts the given value at the beginning of the list.
+	 * Inserts the given value at the beginning of the list (index 0).
 	 * 
-	 * @param value
+	 * @param val
 	 */
-	public void prepend(int value);
+	public void prepend(int val);
 
 	/**
+	 * <p>
 	 * Removes the value at the given index, shifting all subsequent values one to
 	 * the left.
+	 * </p>
+	 * <p>
+	 * e.g. If a = [0, 1, 2, 3], a.remove(2) would make a = [0, 1, 3] and return 2.
+	 * </p>
 	 * 
 	 * @param index
 	 * @return
