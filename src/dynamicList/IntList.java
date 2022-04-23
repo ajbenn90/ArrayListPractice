@@ -18,8 +18,8 @@ package dynamicList;
  * Side note: You do not have to decrease the size of the backing array after a
  * removal. You can if you want to, but it's not required. If you choose to do
  * so, don't decrease the size of the array every time an element is removed.
- * (That would be expensive). Think about a threshold that would provide a
- * good compromise between preserving memory and keeping it inexpensive.
+ * (That would be expensive). Think about a threshold that would provide a good
+ * compromise between preserving memory and keeping it inexpensive.
  * </p>
  * 
  * @author alex
