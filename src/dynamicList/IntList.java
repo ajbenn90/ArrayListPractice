@@ -40,7 +40,10 @@ package dynamicList;
  * <li>toArray - 4</li>
  * <li>trimToSize - 1</li>
  * </ul>
- * 
+ * Note that I used some clever strategies in some of these methods (such as in
+ * <i>empty</i>). If you can't figure out how to make your methods any shorter,
+ * that's fine. As long as it works (and has good style), don't worry too much
+ * about making your methods as short as mine.
  * </p>
  * 
  * @author alex
