@@ -1,4 +1,4 @@
-package dynamicList;
+package dynamicSomeInterface;
 
 /**
  * <p>
@@ -13,7 +13,7 @@ package dynamicList;
  * </p>
  * <p>
  * Like I said above, we could actually name T whatever we want. We could use
- * "Type" or "V" or "Triskaidekaphobia" in place of T, and Java would accept it.
+ * "Type" or "V" or "Triskaidekaphobia" instead of T, and Java would accept it.
  * You just have to use that same name everywhere you would have used the
  * specific, unknown type.
  * </p>
@@ -34,9 +34,9 @@ public class ArbitraryClass<T> implements SomeInterface<T> {
 	}
 
 	/**
-	 * This method can take in any object that inherits from List and uses type T
-	 * (effectively any object that inherits from List<T> where T is the given
-	 * type).
+	 * This method can take in any object that inherits from SomeInterface and uses
+	 * type T (effectively any object that inherits from SomeInterface<T> where T is
+	 * the given type).
 	 */
 	public void goo(SomeInterface<T> other) {
 		// ...
@@ -48,7 +48,7 @@ public class ArbitraryClass<T> implements SomeInterface<T> {
 	 */
 	public T hoo(int i) {
 		// ...
-		return null; //
+		return null; // Just a placeholder return statement
 	}
 
 }
