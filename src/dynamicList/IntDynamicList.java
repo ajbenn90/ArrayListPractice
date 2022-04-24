@@ -180,7 +180,7 @@ public class IntDynamicList implements IntList {
 	 * @param startIndex Where to start shifting
 	 */
 	private void shiftDataLeft(int startIndex) {
-		for (int i = startIndex; i < size; i++)
+		for (int i = startIndex; i <= size; i++)
 			data[i - 1] = data[i];
 	}
 
