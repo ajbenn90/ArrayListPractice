@@ -29,6 +29,7 @@ public class ArbitraryClass<T> implements SomeInterface<T> {
 	 * else). If this is a String type ArbitraryClass, this method can take in a
 	 * String (and only String).
 	 */
+	@Override
 	public void foo(T e) {
 		// ...
 	}
@@ -38,6 +39,7 @@ public class ArbitraryClass<T> implements SomeInterface<T> {
 	 * type T (effectively any object that inherits from SomeInterface<T> where T is
 	 * the given type).
 	 */
+	@Override
 	public void goo(SomeInterface<T> other) {
 		// ...
 	}
@@ -46,9 +48,10 @@ public class ArbitraryClass<T> implements SomeInterface<T> {
 	 * This method returns an object of type T, whatever type that is. If this is an
 	 * ArbitraryClass<String>, then it will return a String.
 	 */
+	@Override
 	public T hoo(int i) {
 		// ...
-		return null; // Just a placeholder return statement
+		return null; // Should return some object of type T
 	}
 
 }
