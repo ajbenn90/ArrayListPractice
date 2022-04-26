@@ -29,10 +29,10 @@ public interface List<T> {
 	public void clear();
 
 	/**
-	 * Checks if the given element is in the list.
+	 * Checks if the given element is in this list.
 	 * 
 	 * @param e
-	 * @return True if the element is in the list. False otherwise.
+	 * @return True if the element is in this list. False otherwise.
 	 */
 	public boolean contains(T e);
 
@@ -77,14 +77,14 @@ public interface List<T> {
 	public void insert(int index, T e);
 
 	/**
-	 * Returns true if the list is empty. False otherwise.
+	 * Returns true if this list is empty. False otherwise.
 	 * 
 	 * @return
 	 */
 	public boolean isEmpty();
 
 	/**
-	 * Returns the index of the last occurrence of the given element or -1 if the
+	 * Returns the index of the last occurrence of the given element or -1 if this
 	 * list does not contain the element.
 	 * 
 	 * @param e
@@ -93,7 +93,7 @@ public interface List<T> {
 	public int lastIndexOf(T e);
 
 	/**
-	 * Inserts the given element at the beginning of the list.
+	 * Inserts the given element at the beginning of this list.
 	 * 
 	 * @param e
 	 */
@@ -123,7 +123,7 @@ public interface List<T> {
 	public T set(int index, T e);
 
 	/**
-	 * Returns the size of the list.
+	 * Returns the size of this list.
 	 * 
 	 * @return
 	 */
@@ -138,7 +138,7 @@ public interface List<T> {
 	public int[] toArray();
 
 	/**
-	 * Trims the capacity of the backing array to match the list's current size.
+	 * Trims the capacity of the backing array to match this list's current size.
 	 */
 	public void trimToSize();
 

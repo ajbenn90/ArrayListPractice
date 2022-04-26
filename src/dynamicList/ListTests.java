@@ -19,6 +19,7 @@ class ListTests {
 		assertEquals(62, list.get(0));
 	}
 
+
 	@Test
 	void prependTest02() {
 		IntDynamicList list = new IntDynamicList();
@@ -63,4 +64,6 @@ class ListTests {
 	// TODO: With toArray, make sure that the array's elements are not pointing to
 	// the elements of the original list
 	// Maybe in appendAll as well
+
+
 }
