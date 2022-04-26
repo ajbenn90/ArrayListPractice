@@ -57,6 +57,8 @@ class ListTests {
 		list.remove(1);
 		assertFalse(list.contains(1701));
 	}
+	
+	
 
 	// TODO: With toArray, make sure that the array's elements are not pointing to
 	// the elements of the original list
