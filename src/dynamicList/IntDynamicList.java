@@ -75,11 +75,10 @@ public class IntDynamicList implements IntList {
 			throw new IndexOutOfBoundsException();
 
 		if (size == data.length)
-			// Special case
-			if (data.length == 0)
-				changeBackingArray(8);
-			else
+			if (data.length != 0)
 				changeBackingArray(size * 2);
+			else // Special case
+				changeBackingArray(10);
 
 		size++;
 		shiftDataRight(index);
