@@ -38,7 +38,8 @@ public interface List<T> {
 
 	/**
 	 * Checks if the given list is the same as this list, i.e. has the same values
-	 * in the same order.
+	 * in the same order. If other is null, return false. However, both arrays may
+	 * contain null values. Null values are considered equal.
 	 * 
 	 * @param other
 	 * @return
@@ -57,7 +58,7 @@ public interface List<T> {
 
 	/**
 	 * Returns the index of the first occurrence of the given element or -1 if the
-	 * list does not contain the element.
+	 * list does not contain the element. The element can be null.
 	 * 
 	 * @param e
 	 * @return
@@ -135,7 +136,7 @@ public interface List<T> {
 	 * 
 	 * @return
 	 */
-	public int[] toArray();
+	public T[] toArray();
 
 	/**
 	 * Trims the capacity of the backing array to match this list's current size.
