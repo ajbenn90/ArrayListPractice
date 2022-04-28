@@ -75,7 +75,11 @@ public class IntDynamicList implements IntList {
 			throw new IndexOutOfBoundsException();
 
 		if (size == data.length)
-			changeBackingArray(size * 2);
+			// Special case
+			if (data.length == 0)
+				changeBackingArray(8);
+			else
+				changeBackingArray(size * 2);
 
 		size++;
 		shiftDataRight(index);
@@ -168,14 +172,15 @@ public class IntDynamicList implements IntList {
 	 * @param startIndex Where to start shifting
 	 */
 	private void shiftDataRight(int startIndex) {
-		for (int i = size; i > startIndex; i--)
+		for (int i = size - 1; i > startIndex; i--)
 			data[i] = data[i - 1];
 	}
 
 	/**
 	 * Shifts data in the backing array one to the left, including the value at
-	 * startIndex. startIndex should never be 0. The data to the left of startIndex
-	 * will be lost. Assumes size has already been decremented.
+	 * startIndex and the value at index size. startIndex should never be 0. The
+	 * data to the left of startIndex will be lost. Assumes size has already been
+	 * decremented.
 	 * 
 	 * @param startIndex Where to start shifting
 	 */
