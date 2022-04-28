@@ -18,7 +18,7 @@ package dynamicList;
  * specific, unknown type.
  * </p>
  */
-public class ArbitraryClass<T> implements SomeInterface<T> {
+public class ExampleGenericClass<T> implements ExampleGenericInterface<T> {
 
 	// You'll need a backing array of type T.
 
@@ -40,7 +40,7 @@ public class ArbitraryClass<T> implements SomeInterface<T> {
 	 * the given type).
 	 */
 	@Override
-	public void goo(SomeInterface<T> other) {
+	public void goo(ExampleGenericInterface<T> other) {
 		// ...
 	}
 
